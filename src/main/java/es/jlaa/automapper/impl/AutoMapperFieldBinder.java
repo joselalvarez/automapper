@@ -193,7 +193,7 @@ public class AutoMapperFieldBinder {
 				throw new AutoMapperException("Error al instanciar la colección '" + field.getName() + "' :" + e);
 			}
 		}else {
-			collection = ReflectionHelper.newArrayInstance(field.getType().componentType(), size);
+			collection = ReflectionHelper.newArrayInstance(field.getType().getComponentType(), size);
 		}
 
 		return collection;
@@ -223,7 +223,7 @@ public class AutoMapperFieldBinder {
 				ParameterizedType parameterizedType = (ParameterizedType) field.getGenericType();
 				return ReflectionHelper.newInstance((Class<?>) parameterizedType.getActualTypeArguments()[0]);
 			}else {
-				return ReflectionHelper.newInstance(field.getType().componentType());
+				return ReflectionHelper.newInstance(field.getType().getComponentType());
 			}
 		} catch (Exception e) {
 			throw new AutoMapperException("Se ha producido un error al instanciar el objeto:" + e);
